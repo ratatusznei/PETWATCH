@@ -341,7 +341,7 @@ void escrever(char stringue[], short int tamanho ,short int tamanhoFonte, short 
 
 char intToChar (int a) // Função que converte um algarismo int para char
 {
-  return (a >= '0' && a <= '9')? (a - '0'): '\0';
+  return (a >= 0 && a <= 9)? (a + '0'): '\0';
 }
 
 void displayStats()
