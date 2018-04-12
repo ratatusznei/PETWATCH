@@ -1,5 +1,5 @@
-#include "all.h"
 /*Incluindo todas as bibliotecas e coisinhas de um jeito mais bonito*/
+#include "all.h"
 
 /*Definindo os Pinos*/
 const int velPerda=1;
