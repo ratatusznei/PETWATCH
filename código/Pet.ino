@@ -1,7 +1,7 @@
 /*Incluindo todas as bibliotecas e coisinhas de um jeito mais bonito*/
 #include "all.h"
 
-/*Definindo os Pinos*/
+/*Taxa de decaimento das barras no tempo*/
 const int velPerda=1;
 const int perdaFome=2;
 const int perdaSede=3;
@@ -30,7 +30,7 @@ Adafruit_SSD1306 display(OLED_RESET);
 #error("Height incorrect, please fix Adafruit_SSD1306.h!");
 #endif
 
-/*Taxa de decaimento das barras no tempo*/
+/*Posicoes das barras na tela*/
 #define POSXBARRAS 97
 #define BARRAVIDA 6
 #define BARRAFOME 19
