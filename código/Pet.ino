@@ -1,27 +1,17 @@
 #include "all.h"
 /*Incluindo todas as bibliotecas e coisinhas de um jeito mais bonito*/
- 
+
+/*Definindo os Pinos*/
+const int velPerda=1;
+const int perdaFome=2;
+const int perdaSede=3;
+const int perdaHigiene=1;
+const int perdaFelicidade=1;
+
 //Modulo RTC DS1307 ligado as portas A4 e A5 do Arduino 
 DS1307 rtc(A4, A5);
 
-#define OLED_RESET 6
-Adafruit_SSD1306 display(OLED_RESET);
-
-
-#define LOGO16_GLCD_HEIGHT 16 
-#define LOGO16_GLCD_WIDTH  16 
-
-#if (SSD1306_LCDHEIGHT != 64)
-#error("Height incorrect, please fix Adafruit_SSD1306.h!");
-#endif
-
-#define POSXBARRAS 97
-#define BARRAVIDA 6
-#define BARRAFOME 19
-#define BARRASEDE 32
-#define BARRAHIGIENE 45
-#define BARRAFELICIDADE 58
-
+/*Definindo mais coisas*/
 const int buttonPosition[4]={3,4,5,2};
 const char saveIntegrity[2]={0,1};
 const char save[2]={5,50};
@@ -30,11 +20,23 @@ const char timeSave[2]={100,150};
 const int daysPerMonth[2][13] = {{-1, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
                            {-1, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}};
 
-const int velPerda=1;
-const int perdaFome=2;
-const int perdaSede=3;
-const int perdaHigiene=1;
-const int perdaFelicidade=1;
+#define LOGO16_GLCD_HEIGHT 16 
+#define LOGO16_GLCD_WIDTH  16 
+
+#define OLED_RESET 6
+Adafruit_SSD1306 display(OLED_RESET);
+
+#if (SSD1306_LCDHEIGHT != 64)
+#error("Height incorrect, please fix Adafruit_SSD1306.h!");
+#endif
+
+/*Taxa de decaimento das barras no tempo*/
+#define POSXBARRAS 97
+#define BARRAVIDA 6
+#define BARRAFOME 19
+#define BARRASEDE 32
+#define BARRAHIGIENE 45
+#define BARRAFELICIDADE 58
 
 enum estado 
 {
