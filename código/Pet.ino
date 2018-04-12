@@ -1,5 +1,9 @@
-#include "all.h"
-/*Incluindo todas as bibliotecas e coisinhas de um jeito mais bonito*/
+#include <Wire.h>
+#include <EEPROM.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+#include <DS1307.h>
+#include "sprites.h"
  
 //Modulo RTC DS1307 ligado as portas A4 e A5 do Arduino 
 DS1307 rtc(A4, A5);
@@ -339,7 +343,7 @@ void escrever(char stringue[], short int tamanho ,short int tamanhoFonte, short 
 
 char intToChar (int a) // Função que converte um algarismo int para char
 {
-  return (a >= '0' && a <= '9')? (a - '0'): '\0';
+  return (a >= 0 && a <= 9)? (a + '0'): '\0';
 }
 
 void displayStats()
