@@ -1,31 +1,17 @@
-#include <Wire.h>
-#include <EEPROM.h>
-#include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
-#include <DS1307.h>
-#include "sprites.h"
- 
+/*Incluindo todas as bibliotecas e coisinhas de um jeito mais bonito*/
+#include "all.h"
+
+/*Taxa de decaimento das barras no tempo*/
+const int velPerda=1;
+const int perdaFome=2;
+const int perdaSede=3;
+const int perdaHigiene=1;
+const int perdaFelicidade=1;
+
 //Modulo RTC DS1307 ligado as portas A4 e A5 do Arduino 
 DS1307 rtc(A4, A5);
 
-#define OLED_RESET 6
-Adafruit_SSD1306 display(OLED_RESET);
-
-
-#define LOGO16_GLCD_HEIGHT 16 
-#define LOGO16_GLCD_WIDTH  16 
-
-#if (SSD1306_LCDHEIGHT != 64)
-#error("Height incorrect, please fix Adafruit_SSD1306.h!");
-#endif
-
-#define POSXBARRAS 97
-#define BARRAVIDA 6
-#define BARRAFOME 19
-#define BARRASEDE 32
-#define BARRAHIGIENE 45
-#define BARRAFELICIDADE 58
-
+/*Definindo mais coisas*/
 const int buttonPosition[4]={3,4,5,2};
 const char saveIntegrity[2]={0,1};
 const char save[2]={5,50};
@@ -34,11 +20,23 @@ const char timeSave[2]={100,150};
 const int daysPerMonth[2][13] = {{-1, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
                            {-1, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}};
 
-const int velPerda=1;
-const int perdaFome=2;
-const int perdaSede=3;
-const int perdaHigiene=1;
-const int perdaFelicidade=1;
+#define LOGO16_GLCD_HEIGHT 16 
+#define LOGO16_GLCD_WIDTH  16 
+
+#define OLED_RESET 6
+Adafruit_SSD1306 display(OLED_RESET);
+
+#if (SSD1306_LCDHEIGHT != 64)
+#error("Height incorrect, please fix Adafruit_SSD1306.h!");
+#endif
+
+/*Posicoes das barras na tela*/
+#define POSXBARRAS 97
+#define BARRAVIDA 6
+#define BARRAFOME 19
+#define BARRASEDE 32
+#define BARRAHIGIENE 45
+#define BARRAFELICIDADE 58
 
 enum estado 
 {
@@ -47,16 +45,6 @@ enum estado
   MENU,
   GAMEOVER
 };
-
-void escrever(char stringue[], short int tamanho ,short int tamanhoFonte, short int cor, short int posX, short int posY);
-char intToChar(int a);
-void displayStats();
-void displayBarras();
-void displayIdade();
-void storeAnything(char * thing, int tam, int pos);
-void readAnything(char * thing, int tam, int pos);
-void opcoesMenu(int opcao);
-void mostrarHoras();
 
 class Pet
 {
@@ -343,27 +331,7 @@ void escrever(char stringue[], short int tamanho ,short int tamanhoFonte, short 
 
 char intToChar (int a) // Função que converte um algarismo int para char
 {
-  if(a==0)                                                                              
-    return '0';
-  if(a==1)
-    return '1';
-  if(a==2)
-    return '2';
-  if(a==3)
-    return '3';
-  if(a==4)
-    return '4';
-  if(a==5)
-    return '5';
-  if(a==6)
-    return '6';
-  if(a==7)
-    return '7';
-  if(a==8)
-    return '8';
-  if(a==9)
-    return '9';
-  return '\0';
+  return (a >= 0 && a <= 9)? (a + '0'): '\0';
 }
 
 void displayStats()
@@ -442,7 +410,8 @@ void opcoesMenu(int opcao) // 0 - comida, 1 - água, 2 - banho, 3 - brincar, 4 -
   }
 }
 // Programado por Henrique Finger Zimerman
-// Invejosos diro que  mentira
+// Invejosos diro que mentira
+// - Eh mentira ~ratatusznei
 void mostrarHoras(Time horas)
 {
   char hora[]="XX:XX";

@@ -1,3 +1,6 @@
+#ifndef __SPRITES_H
+#define __SPRITES_H
+
 //bitmap da barra de stats
 const unsigned char statBar [] PROGMEM = {
   // 'stats'
@@ -515,3 +518,4 @@ const unsigned char brincando4 [] PROGMEM = {
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 };
 
+#endif /*__SPRITES_H*/
