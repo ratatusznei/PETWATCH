@@ -442,7 +442,8 @@ void opcoesMenu(int opcao) // 0 - comida, 1 - água, 2 - banho, 3 - brincar, 4 -
   }
 }
 // Programado por Henrique Finger Zimerman
-// Invejosos diro que  mentira
+// Invejosos diro que mentira
+// - Eh mentira ~ratatusznei
 void mostrarHoras(Time horas)
 {
   char hora[]="XX:XX";
